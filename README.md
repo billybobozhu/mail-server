@@ -1,5 +1,7 @@
 # mail-server
 
+Server using NodeJS and ExpressJS to send email using node-mailer
+
 ### Starting the server
 
 1. Clone the repo
