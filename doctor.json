@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1501479097088,
+        "name": "lucy",
+        "picUrl": "someurl",
+        "regNo": "s-11",
+        "briefDescription": {
+            "speciality": "surgery",
+            "experience": "4yrs",
+            "description": "nothing now"
+        },
+        "contact": {
+            "email": "lucy@gmail.com",
+            "phoneno": 475847679
+        },
+        "status": "avaliable",
+        "waitingTime": 40,
+        "rating": 5,
+        "videoUrl": "not avaliable",
+        "appearUrl": "sss",
+        "thumbnailUrl": "hhh",
+        "lastUpdatedTime": "30mins ago"
+    }
+]
