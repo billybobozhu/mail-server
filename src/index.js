@@ -1,3 +1,3 @@
-import Server from './doctor.api';
+import Server from './server';
 var server = new Server();
 server.run();
