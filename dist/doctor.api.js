@@ -80,24 +80,25 @@ var Server = function () {
                     var newDoctor = {
                         id: Date.now(),
                         name: req.body.name,
-                        picUrl: req.body.picUrl,
+                        picUrl: "https://s3.amazonaws.com/f6s-public/profiles/1295012_original.jpg",
                         regNo: req.body.regNo,
                         briefDescription: {
-                            speciality: req.body.briefDescription.speciality,
-                            experience: req.body.briefDescription.experience,
-                            description: req.body.briefDescription.description
+                            speciality: req.body.speciality,
+                            experience: req.body.experience,
+                            description: req.body.description
                         },
                         contact: {
                             email: req.body.email,
-                            phoneno: req.body.phoneno
+                            phone: req.body.phone
                         },
-                        status: req.body.status,
-                        waitingTime: req.body.waitingTime,
-                        rating: req.body.rating,
-                        videoUrl: req.body.videoUrl,
-                        appearUrl: req.body.appearUrl,
-                        thumbnailUrl: req.body.thumbnailUrl,
-                        lastUpdateTime: req.body.lastUpdateTime
+                        status: "Available",
+                        waitingTime: 10,
+                        rating: 4,
+                        videoUrl: null,
+                        appearUrl: null,
+                        thumbnailUrl: null,
+                        lastUpdateTime: null,
+                        termsAccepted: req.body.termsAccepted
                     };
                     doctor.push(newDoctor);
 
@@ -151,8 +152,8 @@ var Server = function () {
                         description: req.body.briefDescription.description
                     };
                     findDoctorById[0].contact = {
-                        email: req.body.briefDescription.email,
-                        phoneno: req.body.briefDescription.phoneno
+                        email: req.body.contact.email,
+                        phoneno: req.body.contact.phoneno
                     };
                     findDoctorById[0].status = req.body.status;
                     findDoctorById[0].waitingTime = req.body.waitingTime;
@@ -161,6 +162,7 @@ var Server = function () {
                     findDoctorById[0].appearUrl = req.body.appearUrl;
                     findDoctorById[0].thumbnailUrl = req.body.thumbnailUrl;
                     findDoctorById[0].lastUpdateTime = req.body.lastUpdateTime;
+                    findDoctorById[0].termsAccepted = req.body.termsAccepted;
 
                     doctor.splice(idIndex, 1, findDoctorById[0]);
                     _this.fs.writeFile(_this.dataFile, JSON.stringify(doctor, null, 4), function (err) {
