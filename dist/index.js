@@ -1,10 +1,10 @@
 'use strict';
 
-var _doctor = require('./doctor.api');
+var _server = require('./server');
 
-var _doctor2 = _interopRequireDefault(_doctor);
+var _server2 = _interopRequireDefault(_server);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var server = new _doctor2.default();
+var server = new _server2.default();
 server.run();

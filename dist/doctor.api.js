@@ -1,11 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -14,213 +8,156 @@ var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _fs = require('fs');
-
-var _fs2 = _interopRequireDefault(_fs);
-
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 // Load the full build.
 var _ = require('lodash');
 // Load the core build.
+
+//import fs from 'fs';
 var _ = require('lodash/core');
 // Load the FP build for immutable auto-curried iteratee-first data-last methods.
 var fp = require('lodash/fp');
 
-var Server = function () {
-    function Server() {
-        _classCallCheck(this, Server);
+var fs = require('fs');
+var dataFile = _path2.default.join(__dirname, '../doctor.json');
 
-        this.app = (0, _express2.default)();
-        this.fs = _fs2.default;
-        this.dataFile = _path2.default.join(__dirname, '../doctor.json');
-    }
-
-    _createClass(Server, [{
-        key: 'configureApp',
-        value: function configureApp() {
-            this.app.set('port', process.env.PORT || 3000);
-            this.app.use(_bodyParser2.default.json());
-            this.app.use(_bodyParser2.default.urlencoded({ extended: true }));
+exports.post = function (req, res) {
+    fs.readFile(dataFile, function (err, data) {
+        if (err) {
+            console.error(err);
+            process.exit(1);
         }
-    }, {
-        key: 'configureCORS',
-        value: function configureCORS() {
-            // Additional middleware which will set headers that we need on each request.
-            this.app.use(function (req, res, next) {
-                // Set permissive CORS header - this allows this server to be used only as
-                // an API server in conjunction with something like webpack-dev-server.
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                res.setHeader('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET');
-                res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+        var doctor = JSON.parse(data);
+        var newDoctor = {
+            id: Date.now(),
+            name: req.body.name,
+            picUrl: "https://s3.amazonaws.com/f6s-public/profiles/1295012_original.jpg",
+            regNo: req.body.regNo,
+            briefDescription: {
+                speciality: req.body.speciality,
+                experience: req.body.experience,
+                description: req.body.description
+            },
+            contact: {
+                email: req.body.email,
+                phone: req.body.phone
+            },
+            status: "Available",
+            waitingTime: 10,
+            rating: 4,
+            videoUrl: null,
+            appearUrl: null,
+            thumbnailUrl: null,
+            lastUpdateTime: null,
+            termsAccepted: req.body.termsAccepted
+        };
+        doctor.push(newDoctor);
 
-                // Disable caching so we'll always get the latest userDetails.
-                res.setHeader('Cache-Control', 'no-cache');
-                next();
-            });
+        fs.writeFile(dataFile, JSON.stringify(doctor, null, 4), function (err) {
+            if (err) {
+                console.error(err);
+                process.exit(1);
+            }
+        });
+        sortedData = _.sortBy(doctor, 'id');
+        var sortedData = JSON.stringify(sortedData.reverse());
+        res.json(JSON.parse(sortedData));
+    });
+};
+
+exports.get = function (req, res) {
+    fs.readFile(dataFile, function (err, data) {
+        if (err) {
+            console.error(err);
+            process.exit(1);
         }
-    }, {
-        key: 'configureRoutes',
-        value: function configureRoutes() {
-            var _this = this;
+        var unsortedData = JSON.parse(data);
+        //console.log("Unsorted: " + JSON.stringify(unsortedData) + "\n");
+        sortedData = _.sortBy(unsortedData, 'id');
+        //console.log("Sorted: " + JSON.stringify(sortedData.reverse()));
+        var sortedData = JSON.stringify(sortedData.reverse());
+        //console.log("Testing: " + JSON.parse(sortedData) + "\n");
+        res.json(JSON.parse(sortedData));
+    });
+};
 
-            this.app.post('/api/doctor', function (req, res) {
-                _this.fs.readFile(_this.dataFile, function (err, data) {
-                    if (err) {
-                        console.error(err);
-                        process.exit(1);
-                    }
-                    var doctor = JSON.parse(data);
-                    var newDoctor = {
-                        id: Date.now(),
-                        name: req.body.name,
-                        picUrl: "https://s3.amazonaws.com/f6s-public/profiles/1295012_original.jpg",
-                        regNo: req.body.regNo,
-                        briefDescription: {
-                            speciality: req.body.speciality,
-                            experience: req.body.experience,
-                            description: req.body.description
-                        },
-                        contact: {
-                            email: req.body.email,
-                            phone: req.body.phone
-                        },
-                        status: "Available",
-                        waitingTime: 10,
-                        rating: 4,
-                        videoUrl: null,
-                        appearUrl: null,
-                        thumbnailUrl: null,
-                        lastUpdateTime: null,
-                        termsAccepted: req.body.termsAccepted
-                    };
-                    doctor.push(newDoctor);
-
-                    _this.fs.writeFile(_this.dataFile, JSON.stringify(doctor, null, 4), function (err) {
-                        if (err) {
-                            console.error(err);
-                            process.exit(1);
-                        }
-                    });
-                    sortedData = _.sortBy(doctor, 'id');
-                    var sortedData = JSON.stringify(sortedData.reverse());
-                    res.json(JSON.parse(sortedData));
-                });
-            });
-            this.app.get('/api/doctor', function (req, res) {
-                _this.fs.readFile(_this.dataFile, function (err, data) {
-                    if (err) {
-                        console.error(err);
-                        process.exit(1);
-                    }
-                    var unsortedData = JSON.parse(data);
-                    //console.log("Unsorted: " + JSON.stringify(unsortedData) + "\n");
-                    sortedData = _.sortBy(unsortedData, 'id');
-                    //console.log("Sorted: " + JSON.stringify(sortedData.reverse()));
-                    var sortedData = JSON.stringify(sortedData.reverse());
-                    //console.log("Testing: " + JSON.parse(sortedData) + "\n");
-                    res.json(JSON.parse(sortedData));
-                });
-            });
-            this.app.put('/api/doctor/:id', function (req, res) {
-                _this.fs.readFile(_this.dataFile, function (err, data) {
-                    if (err) {
-                        console.error(err);
-                        process.exit(1);
-                    }
-                    var doctor = JSON.parse(data);
-                    var idIndex = 0;
-                    var findDoctorById = doctor.filter(function (doctorData) {
-                        if (doctorData.id == req.params.id) {
-                            idIndex = doctor.indexOf(doctorData);
-                            return doctorData;
-                        }
-                    });
-
-                    findDoctorById[0].name = req.body.name;
-                    findDoctorById[0].picUrl = req.body.picUrl;
-                    findDoctorById[0].regNo = req.body.regNo;
-                    findDoctorById[0].briefDescription = {
-                        speciality: req.body.briefDescription.speciality,
-                        experience: req.body.briefDescription.experience,
-                        description: req.body.briefDescription.description
-                    };
-                    findDoctorById[0].contact = {
-                        email: req.body.contact.email,
-                        phoneno: req.body.contact.phoneno
-                    };
-                    findDoctorById[0].status = req.body.status;
-                    findDoctorById[0].waitingTime = req.body.waitingTime;
-                    findDoctorById[0].rating = req.body.rating;
-                    findDoctorById[0].videoUrl = req.body.videoUrl;
-                    findDoctorById[0].appearUrl = req.body.appearUrl;
-                    findDoctorById[0].thumbnailUrl = req.body.thumbnailUrl;
-                    findDoctorById[0].lastUpdateTime = req.body.lastUpdateTime;
-                    findDoctorById[0].termsAccepted = req.body.termsAccepted;
-
-                    doctor.splice(idIndex, 1, findDoctorById[0]);
-                    _this.fs.writeFile(_this.dataFile, JSON.stringify(doctor, null, 4), function (err) {
-                        if (err) {
-                            console.error(err);
-                            process.exit(1);
-                        }
-                        res.json(doctor);
-                    });
-                });
-            });
-            this.app.delete('/api/doctor/:id', function (req, res) {
-                _this.fs.readFile(_this.dataFile, function (err, data) {
-                    if (err) {
-                        console.error(err);
-                        process.exit(1);
-                    }
-                    var doctor = JSON.parse(data);
-                    var idIndex = null;
-                    var findDoctorById = doctor.filter(function (doctorData) {
-                        if (doctorData.id == req.params.id) {
-                            idIndex = doctor.indexOf(doctorData);
-                            return doctorData;
-                        }
-                    });
-
-                    if (idIndex >= 0) {
-                        doctor.splice(idIndex, 1);
-                    }
-
-                    _this.fs.writeFile(_this.dataFile, JSON.stringify(doctor, null, 4), function (err) {
-                        if (err) {
-                            console.error(err);
-                            process.exit(1);
-                        }
-                        res.json(doctor);
-                    });
-                });
-            });
+exports.put = function (req, res) {
+    fs.readFile(dataFile, function (err, data) {
+        if (err) {
+            console.error(err);
+            process.exit(1);
         }
-    }, {
-        key: 'listen',
-        value: function listen(port) {
-            this.app.listen(port, function () {
-                console.log('Server started: http://localhost:' + port + '/');
-            });
-        }
-    }, {
-        key: 'run',
-        value: function run() {
-            this.configureApp();
-            this.configureCORS();
-            this.configureRoutes();
-            this.listen(this.app.get('port'));
-        }
-    }]);
+        var doctor = JSON.parse(data);
+        var idIndex = 0;
+        var findDoctorById = doctor.filter(function (doctorData) {
+            if (doctorData.id == req.params.id) {
+                idIndex = doctor.indexOf(doctorData);
+                return doctorData;
+            }
+        });
 
-    return Server;
-}();
+        findDoctorById[0].name = req.body.name;
+        findDoctorById[0].picUrl = req.body.picUrl;
+        findDoctorById[0].regNo = req.body.regNo;
+        findDoctorById[0].briefDescription = {
+            speciality: req.body.briefDescription.speciality,
+            experience: req.body.briefDescription.experience,
+            description: req.body.briefDescription.description
+        };
+        findDoctorById[0].contact = {
+            email: req.body.contact.email,
+            phoneno: req.body.contact.phoneno
+        };
+        findDoctorById[0].status = req.body.status;
+        findDoctorById[0].waitingTime = req.body.waitingTime;
+        findDoctorById[0].rating = req.body.rating;
+        findDoctorById[0].videoUrl = req.body.videoUrl;
+        findDoctorById[0].appearUrl = req.body.appearUrl;
+        findDoctorById[0].thumbnailUrl = req.body.thumbnailUrl;
+        findDoctorById[0].lastUpdateTime = req.body.lastUpdateTime;
+        findDoctorById[0].termsAccepted = req.body.termsAccepted;
 
-exports.default = Server;
+        doctor.splice(idIndex, 1, findDoctorById[0]);
+        fs.writeFile(dataFile, JSON.stringify(doctor, null, 4), function (err) {
+            if (err) {
+                console.error(err);
+                process.exit(1);
+            }
+            res.json(doctor);
+        });
+    });
+};
+
+exports.delete = function (req, res) {
+    fs.readFile(dataFile, function (err, data) {
+        if (err) {
+            console.error(err);
+            process.exit(1);
+        }
+        var doctor = JSON.parse(data);
+        var idIndex = null;
+        var findDoctorById = doctor.filter(function (doctorData) {
+            if (doctorData.id == req.params.id) {
+                idIndex = doctor.indexOf(doctorData);
+                return doctorData;
+            }
+        });
+
+        if (idIndex >= 0) {
+            doctor.splice(idIndex, 1);
+        }
+
+        fs.writeFile(dataFile, JSON.stringify(doctor, null, 4), function (err) {
+            if (err) {
+                console.error(err);
+                process.exit(1);
+            }
+            res.json(doctor);
+        });
+    });
+};
