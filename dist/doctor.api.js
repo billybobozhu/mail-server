@@ -17,8 +17,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Load the full build.
 var _ = require('lodash');
 // Load the core build.
-
-//import fs from 'fs';
 var _ = require('lodash/core');
 // Load the FP build for immutable auto-curried iteratee-first data-last methods.
 var fp = require('lodash/fp');
