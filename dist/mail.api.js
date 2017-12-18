@@ -4,7 +4,7 @@ var nodemailer = require('nodemailer');
 
 exports.post = function (req, res) {
     // body of the mail for user
-    var userOutput = '\n            <h3>Greetings from mesomeds!</h3>\n            <p>Thank you for subscribing to our newsletter. We will get in touch with you soon.</p>\n            <p>Thank you and Regards,<br/>Mesomeds Team</p>\n            ';
+    var userOutput = '\n            <h3>Greetings from Mesomeds!</h3>\n            <p>Thank you for subscribing to our newsletter. We will get in touch with you soon.</p>\n            <p>Regards,<br/>Team Mesomeds</p>\n            ';
 
     // body of the mail for admin
     var adminOutput = '\n                <p>Newsletter Request</p>\n                <h3>Contact Details</h3>\n                <ul>\n                    <li>FullName: ' + req.body.name + '</li>\n                    <li>Email ID: ' + req.body.email + '</li>\n                    <li>Subject: ' + req.body.subject + '</li>\n                </ul>\n                <h3>Message</h3>\n                <p>Message: ' + req.body.comment + '</p>\n            ';
