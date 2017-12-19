@@ -194,5 +194,28 @@
         "thumbnailUrl": null,
         "lastUpdateTime": null,
         "termsAccepted": true
+    },
+    {
+        "id": 1513668404932,
+        "name": "Arun Gadag",
+        "picUrl": "https://s3.amazonaws.com/f6s-public/profiles/1295012_original.jpg",
+        "regNo": "abc1234",
+        "briefDescription": {
+            "speciality": "gp",
+            "experience": "3",
+            "description": "Testing"
+        },
+        "contact": {
+            "email": "arun.gdg@gmail.com",
+            "phone": "8970074777"
+        },
+        "status": "Available",
+        "waitingTime": 10,
+        "rating": 4,
+        "videoUrl": null,
+        "appearUrl": null,
+        "thumbnailUrl": null,
+        "lastUpdateTime": null,
+        "termsAccepted": true
     }
 ]
