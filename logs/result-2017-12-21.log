@@ -1,0 +1,78 @@
+[2017-12-21T10:26:56.450] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T10:51:49.365] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T10:52:15.898] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T12:19:58.601] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T12:24:55.536] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T12:25:10.488] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T12:29:41.932] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T12:30:14.728] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T13:01:56.371] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T13:02:21.455] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T13:04:58.875] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T13:05:40.093] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T13:06:11.409] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T13:25:10.481] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T13:29:44.050] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T15:02:26.657] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T15:02:26.705] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T15:02:45.332] [INFO] default - Doctor registered is {"__v":0,"name":"Arun","picUrl":"https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAgGAAAAJDE3ZWZlMmUxLTYyNTMtNDkyNC04MmVkLWYxMjBiYjczMWVhZQ.jpg","regNo":"abc1234","status":"Available","waitingTime":4,"rating":5,"videoUrl":null,"appearUrl":null,"thumbnailUrl":null,"termsAccepted":true,"_id":"5a3b7fbc86284a342c47eabf","contact":{"email":"arun@awnics.com","phone":"8970074777"},"briefDescription":{"speciality":"GP","experience":4,"description":"Testing"},"id":"2017-12-21T09:32:44.946Z"}
+[2017-12-21T15:06:21.899] [INFO] default - Doctors list [{"_id":"5a3b7fbc86284a342c47eabf","name":"Arun","picUrl":"https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAgGAAAAJDE3ZWZlMmUxLTYyNTMtNDkyNC04MmVkLWYxMjBiYjczMWVhZQ.jpg","regNo":"abc1234","status":"Available","waitingTime":4,"rating":5,"videoUrl":null,"appearUrl":null,"thumbnailUrl":null,"termsAccepted":true,"__v":0,"contact":{"email":"arun@awnics.com","phone":"8970074777"},"briefDescription":{"speciality":"GP","experience":4,"description":"Testing"},"id":"2017-12-21T09:32:44.946Z"}]
+[2017-12-21T15:11:44.071] [INFO] default - The mail sent is: {"__v":0,"emailTo":"arun@awnics.com","emailFrom":"test.arung@gmail.com","subject":"Mail subscription from arun@awnics.com","content":"Request for Mesomeds newsletter","_id":"5a3b81d786284a342c47eac0","id":"2017-12-21T09:41:43.794Z"}
+[2017-12-21T15:11:47.767] [INFO] default - The mail sent is: {"message":"Email sent successfully!"}
+[2017-12-21T15:24:20.263] [INFO] default - The mail sent is: {"__v":0,"emailFrom":"test.arung@gmail.com","subject":"Mail subscription from undefined","content":"Request for Mesomeds newsletter","_id":"5a3b84cc86284a342c47eac1","id":"2017-12-21T09:54:20.256Z"}
+[2017-12-21T15:36:56.337] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T15:36:56.374] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T15:55:19.826] [INFO] default - Doctor registered is {"__v":0,"name":"Arun Gadag","regNo":"xyz1234","termsAccepted":true,"_id":"5a3b8c0fe9213716186d794e","id":"2017-12-21T10:25:19.780Z"}
+[2017-12-21T15:58:49.297] [INFO] default - Doctors list [{"_id":"5a3b7fbc86284a342c47eabf","name":"Arun","picUrl":"https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAgGAAAAJDE3ZWZlMmUxLTYyNTMtNDkyNC04MmVkLWYxMjBiYjczMWVhZQ.jpg","regNo":"abc1234","status":"Available","waitingTime":4,"rating":5,"videoUrl":null,"appearUrl":null,"thumbnailUrl":null,"termsAccepted":true,"__v":0,"contact":{"email":"arun@awnics.com","phone":"8970074777"},"briefDescription":{"speciality":"GP","experience":4,"description":"Testing"},"id":"2017-12-21T09:32:44.946Z"},{"_id":"5a3b8c0fe9213716186d794e","name":"Arun Gadag","regNo":"xyz1234","termsAccepted":true,"__v":0,"id":"2017-12-21T10:25:19.780Z"}]
+[2017-12-21T17:39:05.181] [INFO] default - Doctor registered is {"__v":0,"name":"Arun Gadag","regNo":"abc1234","termsAccepted":true,"_id":"5a3ba461e9213716186d794f","id":"2017-12-21T12:09:05.168Z"}
+[2017-12-21T17:43:47.974] [INFO] default - Doctor registered is {"__v":0,"name":"Arun Gadag","regNo":"abc1234","termsAccepted":true,"_id":"5a3ba57be9213716186d7950","id":"2017-12-21T12:13:47.970Z"}
+[2017-12-21T17:45:12.409] [INFO] default - Doctor registered is {"__v":0,"name":"Arun Gadag","regNo":"abc1234","termsAccepted":true,"_id":"5a3ba5d0e9213716186d7951","id":"2017-12-21T12:15:12.406Z"}
+[2017-12-21T18:04:00.945] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:04:00.982] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:04:47.717] [INFO] default - Doctor registered is {"__v":0,"name":"Arun Gadag","picUrl":null,"regNo":"abc1234","status":null,"waitingTime":null,"rating":null,"videoUrl":null,"appearUrl":null,"thumbnailUrl":null,"lastUpdateTime":"2017-12-21T12:34:47.661Z","termsAccepted":true,"_id":"5a3baa6777f2b83620931f33","contact":{"email":"arun.gdg@gmail.com","phone":"8970074777"},"briefDescription":{"speciality":"gp","experience":1,"description":"Testing new interface..."},"id":"2017-12-21T12:34:47.663Z"}
+[2017-12-21T18:06:26.467] [INFO] default - Doctor registered is {"__v":0,"name":"Kiran","picUrl":null,"regNo":"abc1234","status":null,"waitingTime":null,"rating":null,"videoUrl":null,"appearUrl":null,"thumbnailUrl":null,"lastUpdateTime":"2017-12-21T12:36:26.460Z","termsAccepted":true,"_id":"5a3baaca77f2b83620931f34","contact":{"email":"arun.gdg@gmail.com","phone":"8970074777"},"briefDescription":{"speciality":"gp","experience":13,"description":"testing............"},"id":"2017-12-21T12:36:26.461Z"}
+[2017-12-21T18:10:10.367] [INFO] default - The mail sent is: {"__v":0,"emailFrom":"test.arung@gmail.com","subject":"Mail subscription from undefined","content":"Request for Mesomeds newsletter","_id":"5a3babaa77f2b83620931f35","id":"2017-12-21T12:40:10.339Z"}
+[2017-12-21T18:32:28.298] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:32:28.340] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:33:17.028] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:33:17.067] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:43:21.376] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:43:21.504] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:45:17.590] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:45:17.631] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:46:04.661] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:46:04.702] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:47:37.435] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:47:37.476] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:48:52.144] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:48:52.186] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:48:59.740] [INFO] default - The mail sent is: {"__v":0,"emailFrom":"test.arung@gmail.com","subject":"Mail subscription from undefined","content":"Request for Mesomeds newsletter","_id":"5a3bb4c39849cc0168f7bdb0","id":"2017-12-21T13:18:59.669Z"}
+[2017-12-21T18:52:39.020] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:52:39.062] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:52:57.265] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:52:57.309] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:55:32.433] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T18:55:32.476] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T18:55:39.985] [INFO] default - The mail sent is: {"__v":0,"emailTo":"arun@awnics.com","emailFrom":"test.arung@gmail.com","subject":"Mail subscription from arun@awnics.com","content":"Request for Mesomeds newsletter","_id":"5a3bb6538c82f90e40751194","id":"2017-12-21T13:25:39.923Z"}
+[2017-12-21T18:55:43.433] [INFO] default - The mail sent is: {"message":"Email sent successfully!"}
+[2017-12-21T18:55:43.689] [INFO] default - The mail sent is: {"message":"Email sent successfully!"}
+[2017-12-21T19:01:42.173] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T19:01:42.213] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T19:03:15.694] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T19:03:15.747] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T19:03:30.622] [INFO] default - Message sent: <a4c76209-d808-21f7-d12d-22d6f964980a@gmail.com>
+[2017-12-21T19:03:30.624] [INFO] default - Preview URL: false
+[2017-12-21T19:03:30.885] [INFO] default - Message sent: <b7d71e1d-e964-6b06-7e51-88a93c24f03b@gmail.com>
+[2017-12-21T19:03:30.888] [INFO] default - Preview URL: false
+[2017-12-21T19:04:52.929] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T19:04:52.969] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T19:05:19.834] [INFO] default - Server started: http://localhost:3000/
+[2017-12-21T19:05:19.879] [INFO] default - Connection established successfully for MongoDB
+[2017-12-21T19:05:42.921] [INFO] default - Message sent: <7ad2339f-243d-0161-d2f3-47761424bf75@gmail.com>
+[2017-12-21T19:05:42.925] [INFO] default - Preview URL: false
+[2017-12-21T19:05:43.237] [INFO] default - Message sent: <9b9a6cef-d939-1545-ffba-74f66144f11f@gmail.com>
+[2017-12-21T19:05:43.239] [INFO] default - Preview URL: false
+[2017-12-21T19:06:35.600] [INFO] default - Message sent: <7cad9f8d-5dfa-930b-a6c4-cb859aea9db2@gmail.com>
+[2017-12-21T19:06:35.602] [INFO] default - Preview URL: false
+[2017-12-21T19:06:35.959] [INFO] default - Message sent: <bce5e7ed-5de3-ea01-6e3d-298a60e7f146@gmail.com>
+[2017-12-21T19:06:35.961] [INFO] default - Preview URL: false

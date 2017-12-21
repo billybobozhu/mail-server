@@ -1,3 +1,4 @@
-import Server from './server';
+import Server from './config/app.config';
+
 var server = new Server();
 server.run();

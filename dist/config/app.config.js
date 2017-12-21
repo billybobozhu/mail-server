@@ -18,27 +18,47 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
+var _dotenv = require('dotenv');
+
+var _dotenv2 = _interopRequireDefault(_dotenv);
+
+var _conn = require('./conn.mongo');
+
+var _conn2 = _interopRequireDefault(_conn);
+
+var _mail = require('../apis/mail/mail.controller');
+
+var _mail2 = _interopRequireDefault(_mail);
+
+var _doctor = require('../apis/doctor/doctor.controller');
+
+var _doctor2 = _interopRequireDefault(_doctor);
+
+var _log4js = require('./log4js.config');
+
+var _log4js2 = _interopRequireDefault(_log4js);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var doctor = require('./doctor.api');
-var mail = require('./mail.api');
-var nodemailer = require('nodemailer');
 
 var Server = function () {
     function Server() {
         _classCallCheck(this, Server);
 
         this.app = (0, _express2.default)();
+        this.dotenv = _dotenv2.default;
+        this.dotenv.config({ path: '.env.dev' });
+        this.mongo = new _conn2.default();
     }
 
     _createClass(Server, [{
         key: 'configureApp',
         value: function configureApp() {
-            this.app.set('port', process.env.PORT || 3000);
+            this.app.set('port', process.env.PORT);
             this.app.use(_bodyParser2.default.json());
             this.app.use(_bodyParser2.default.urlencoded({ extended: true }));
+            this.mongo.connect();
         }
     }, {
         key: 'configureCORS',
@@ -59,18 +79,14 @@ var Server = function () {
     }, {
         key: 'configureRoutes',
         value: function configureRoutes() {
-
-            this.app.post('/send', mail.post);
-            this.app.get('/api/doctorGet', doctor.get);
-            this.app.post('/api/doctorPost', doctor.post);
-            this.app.put('/api/doctorEdit/:id', doctor.put);
-            this.app.delete('/api/doctorDelete/:id', doctor.delete);
+            this.app.use('/mailApi', _mail2.default);
+            this.app.use('/doctorApi', _doctor2.default);
         }
     }, {
         key: 'listen',
         value: function listen(port) {
             this.app.listen(port, function () {
-                console.log('Server started: http://localhost:' + port + '/');
+                _log4js2.default.info('Server started: http://localhost:' + port + '/');
             });
         }
     }, {
